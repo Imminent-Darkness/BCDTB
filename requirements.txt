@@ -1,0 +1,6 @@
+ccxt
+pandas
+numpy
+ta
+schedule
+bybit
