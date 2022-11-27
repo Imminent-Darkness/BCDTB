@@ -20,6 +20,7 @@ from datetime import datetime
 from pprint import pprint
 import os
 import glob
+from python import position
 
 pd.set_option('display.max_rows', None)
 warnings.filterwarnings('ignore')
@@ -483,7 +484,7 @@ class Myasset:
         
         return k, d, sd, ul, dl
     
-
+    '''
     def __get_position(self, attempt=0):
         
         # Exits function after 5 connection attempts 
@@ -739,6 +740,7 @@ class Myasset:
                          )
         
         return order
+        '''
 
 
     def __check_buy_sell_signals(self, df: object, macro: bool, price: float):
@@ -754,6 +756,7 @@ class Myasset:
         currentSD = df['Stoch_SD'][last_row]
         currentK = df['Stoch_K'][last_row]
         previousK = df['Stoch_K'][previous_row]
+        p = position.Position()
 
         if df['in_uptrend3'][last_row]:
             
@@ -771,7 +774,7 @@ class Myasset:
                         if ((currentK > currentD) 
                             and (previousK <= previousD)):
                             
-                            if not self.in_position():
+                            if not p.inPosition(self.exchange, self.symbol):
                                 
                                 print("creating long position...")
                                 last_ticker = self.__get_last_ticker()
@@ -779,18 +782,23 @@ class Myasset:
                                 total, available = self.__get_wallet_balance(last_px)
                                 self.__set_trade_amount(available)
                                 #self.df = self.__create_ohlcv_df()
-                                pprint(self.__long(self.symbol, 
-                                                   self.trade_amount, 
-                                                   self.leverage, 
-                                                   take_profit=(price+(
-                                                       (price*self.takeprofit)/self.leverage
-                                                       )), 
-                                                   safety_margin=(price-(
-                                                       (price*self.stoploss)/self.leverage
-                                                       )))
+                                pprint(p.long(  self.exchange,
+                                                self.symbol, 
+                                                self.trade_amount, 
+                                                self.leverage, 
+                                                take_profit=(price+(
+                                                    (price*self.takeprofit)/self.leverage
+                                                    )), 
+                                                safety_margin=(price-(
+                                                    (price*self.stoploss)/self.leverage
+                                                    )))
                                        )
                             else:
-                                print("Already in long position...")
+                                pos = p.getPosition(self.exchange, self.symbol)
+                                if pos['Side'] == 'Sell':
+                                    p.close(self.exchange, self.symbol)
+                                else:
+                                    print("Already in long position...")
                 else:
                     print("either the price is not above the weighted moving average")
                     print(" or we are already in position")
@@ -811,25 +819,30 @@ class Myasset:
                         if ((currentK < currentD) 
                             and (previousK >= previousD)):
                             
-                            if not self.in_position():
+                            if not p.inPosition(self.exchange, self.symbol):
                                 
                                 print("creating short position")
                                 last_ticker = self.__get_last_ticker()
                                 last_px = last_ticker['last']
                                 total, available = self.__get_wallet_balance(last_px)
                                 self.__set_trade_amount(available)
-                                pprint(self.__short(self.symbol, 
-                                                    self.trade_amount, 
-                                                    self.leverage, 
-                                                    take_profit=(price-(
-                                                        (price*self.takeprofit)/self.leverage
-                                                        )), 
-                                                    safety_margin=(price+(
-                                                        (price*self.stoploss)/self.leverage
-                                                        )))
+                                pprint(p.short( self.exchange,
+                                                self.symbol, 
+                                                self.trade_amount, 
+                                                self.leverage, 
+                                                take_profit=(price-(
+                                                    (price*self.takeprofit)/self.leverage
+                                                    )), 
+                                                safety_margin=(price+(
+                                                    (price*self.stoploss)/self.leverage
+                                                    )))
                                        )
                             else:
-                                print("Already in short position...")
+                                pos = p.getPosition(self.exchange, self.symbol)
+                                if pos['Side'] == 'Buy':
+                                    p.close(self.exchange, self.symbol)
+                                else:
+                                    print("Already in short position...")
                 else:
                     print("either the price is not below the weighted moving average")
                     print("or we are already in position")
