@@ -1,11 +1,7 @@
 # config.py
 
-OLD_API_KEY = 'W3Ol9qls4i6hBcF1vf'
-#API_KEY = 'None'
-OLD_SECRET_KEY = 'KefbmN2ScM18LoW67ksPCMt80FhcOIMagwgZ'
-
-API_KEY = 'ttrdRWqIwJzxdpMlR9'
-SECRET_KEY = 'nlQgM24JZqDLjRN5YRiibxOaQanij2VF9ubB'
+API_KEY = 'YourAPIkey'
+SECRET_KEY = 'YourSecretKey'
 
 # Are you using a testnet key: True or False
 
