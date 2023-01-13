@@ -3,3 +3,4 @@ ccxt
 pandas
 mplfinance
 numpy
+schedule
