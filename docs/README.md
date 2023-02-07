@@ -1,3 +1,7 @@
+---
+base_url: /BCDTB/
+---
+
 # Bybit Cryptocurrency Derivatives Trading Bot 
 
 The Bybit Cryptocurrency Derivatives Trading Bot (BCDTB) automates the trading 
