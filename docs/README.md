@@ -1,5 +1,5 @@
 ---
-base_url: /BCDTB/
+
 ---
 
 # Bybit Cryptocurrency Derivatives Trading Bot 
