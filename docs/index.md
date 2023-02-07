@@ -114,8 +114,10 @@ SYMBOL = 'USDT'
 Bybit makes OHLCV data of multiple timeframes available for setting TIME_FRAME 
 with. A list of these and the string by which to reference them can be found 
 below.
+
 | Time Frame | Reference String |
 | ---------- | ---------------- |
+
 | 1 Minute   | '1m'             |
 | 3 Minute   | '3m'             |
 | 5 Minute   | '5m'             |
