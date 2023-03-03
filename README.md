@@ -7,7 +7,13 @@ generating buy/sell signals using a trading strategy[^1] based on technical
 analysis. This strategy uses three Supertrend instances, the 50_EMA, and 
 200_EMA to determine trend direction while using the Stochastic RSI for entries.
 
+## Environment setup
 
+This project was created in a conda environment on a Windows 10 machine. I haven't 
+found a method to install the required dependencies on other python environments, so 
+installing Anaconda or mini-conda with python3.8 is a necessity at this time. I have included an 
+`environment.yml` file in this project's root directory. To create the environment 
+run `conda env create -f environment.yml`.
 
 ## The Strategy 
 
