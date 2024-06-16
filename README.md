@@ -1,6 +1,6 @@
 # Bybit Cryptocurrency Derivatives Trading Bot 
 
-<h2 style="color:red">Now this project can be run with docker!</h2>
+<h2 style="color:red;">Now this project can be run with docker!</h2>
 
 The Bybit Cryptocurrency Derivatives Trading Bot (BCDTB) automates the trading 
 of cryptocurrency derivatives on the Bybit exchange. This is done by regularly 
