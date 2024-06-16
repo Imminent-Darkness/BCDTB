@@ -9,11 +9,16 @@ analysis. This strategy uses three Supertrend instances, the 50_EMA, and
 
 ## Environment setup
 
+### Anaconda
+
 This project was created in a conda environment on a Windows 10 machine. I haven't 
 found a method to install the required dependencies on other python environments, so 
 installing Anaconda or mini-conda with python3.8 is a necessity at this time. I have included an 
 `environment.yml` file in this project's root directory. To create the environment 
 run `conda env create -f environment.yml`.
+
+### Docker
+If you are having trouble with setting up a conda environment, you can run this project in a docker container. Just clone this repository to your local machine, `cd` into the repository's root directory, build the provided `Dockerfile` with the command `docker build -t bcdtb-env .`, configure the bot as described in this `README.md`, and run the bot with the command `docker run -it bcdtb-env`. 
 
 ## The Strategy 
 
