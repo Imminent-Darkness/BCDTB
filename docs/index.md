@@ -1,13 +1,13 @@
 ---
 
 ---
-<h3>Software Requirements Document (SRS)</h3>
+<h1>Software Requirements Document (SRS)</h1>
 <embed src= "BCDTB_Software-Requirements-Document.pdf" type="application/pdf" width= "100%" height= "500">
 
-<h3>Software Design Document (SDS)</h3>
+<h1>Software Design Document (SDS)</h1>
 <embed src= "BCDTB_Software-Design-Document.pdf" type="application/pdf" width= "100%" height= "500">
 
-***
+===
 
 # Bybit Cryptocurrency Derivatives Trading Bot 
 
